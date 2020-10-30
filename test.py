@@ -13,7 +13,7 @@ def main():
     MODEL_DIR = './models'
     IMAGE_FILENAME = './path/to/image/filename.tif'
     CAV_SEGMENTER_NUMBER = 1    # 1, 2
-    K_FOLD_NUMBER = 2           # 1, 2, 3, 4, 5, 6, 7, 8, 9
+    K_FOLD_NUMBER = 1           # 1, 2, 3, 4, 5, 6, 7, 8, 9
 
     #################################### SETTINGS ######################################################
 
