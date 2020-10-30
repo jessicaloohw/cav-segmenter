@@ -1,20 +1,17 @@
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "1"
-
 import warnings
 import skimage.io
 import numpy as np
 import tensorflow as tf
 
-import For_Github_network as network
-
+import network
 
 def main():
 
     ################################### USER INPUT #####################################################
 
-    MODEL_DIR = '/media/ubuntu/My Passport/Data/MacTel_Cavitations/New_K-fold/For_Github/Trained_Networks'
-    IMAGE_FILENAME = '/media/ubuntu/My Passport/Data/MacTel_Cavitations/New_K-fold/For_Github/011-030_1397175584_51.tif'
+    MODEL_DIR = './Trained_Networks'
+    IMAGE_FILENAME = './path/to/image/filename.tif'
     CAV_SEGMENTER_NUMBER = 1    # 1, 2
     K_FOLD_NUMBER = 2           # 1, 2, 3, 4, 5, 6, 7, 8, 9
 
