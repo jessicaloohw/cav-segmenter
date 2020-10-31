@@ -119,3 +119,36 @@ def stitch_images(slice_prediction, slice_idxs, num_cols):
     image_prediction[~np.isfinite(image_prediction)] = 0
 
     return image_prediction
+
+
+def get_mean_and_std(k):
+    
+    if k == 1:
+        meanval = 34.8861
+        stdval = 5.5246
+    elif k == 2:
+        meanval = 34.7528
+        stdval = 5.4514
+    elif k == 3:
+        meanval = 34.1954
+        stdval = 5.7631
+    elif k == 4:
+        meanval = 35.1645
+        stdval = 6.5211
+    elif k == 5:
+        meanval = 35.3745
+        stdval = 7.8485
+    elif k == 6:
+        meanval = 34.2179
+        stdval = 7.5478
+    elif k == 7:
+        meanval = 34.5932
+        stdval = 6.8279
+    elif k == 8:
+        meanval = 33.5666
+        stdval = 5.6292
+    elif k == 9:
+        meanval = 34.1246
+        stdval = 5.9265
+        
+    return meanval, stdval
