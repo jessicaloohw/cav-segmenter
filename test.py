@@ -18,6 +18,9 @@ def main():
     #################################### SETTINGS ######################################################
 
     # Check user-input:
+    if not os.path.exists(MODEL_DIR):
+        print('Invalid MODEL_DIR.')
+        return
     if not os.path.exists(IMAGE_FILENAME):
         print('Invalid IMAGE_FILENAME.')
         return
@@ -60,12 +63,8 @@ def main():
 
         # Load weights:
         SEGMENTATION_MODEL_PATH = os.path.join(MODEL_DIR, 'cav-segmenter{}'.format(CAV_SEGMENTER_NUMBER), 'model-{}'.format(K_FOLD_NUMBER))
-        if os.path.exists('{}.meta'.format(SEGMENTATION_MODEL_PATH)):
-            saver.restore(sess, SEGMENTATION_MODEL_PATH)
-            print('Network restored: cav-segmenter{}/model-{}.'.format(CAV_SEGMENTER_NUMBER, K_FOLD_NUMBER))
-        else:
-            print('SEGMENTATION_MODEL_PATH does not exist.')
-            return
+        saver.restore(sess, SEGMENTATION_MODEL_PATH)
+        print('Network restored: cav-segmenter{}/model-{}.'.format(CAV_SEGMENTER_NUMBER, K_FOLD_NUMBER))
 
         # Load image:
         image = skimage.io.imread(IMAGE_FILENAME)
