@@ -35,35 +35,6 @@ def main():
     THRESHOLD = 0.5
     MAX_SLICES = 350    # Change according to the size of GPU
 
-    # Mean and standard deviation:
-    if K_FOLD_NUMBER == 1:
-        meanval = 34.8861
-        stdval = 5.5246
-    elif K_FOLD_NUMBER == 2:
-        meanval = 34.7528
-        stdval = 5.4514
-    elif K_FOLD_NUMBER == 3:
-        meanval = 34.1954
-        stdval = 5.7631
-    elif K_FOLD_NUMBER == 4:
-        meanval = 35.1645
-        stdval = 6.5211
-    elif K_FOLD_NUMBER == 5:
-        meanval = 35.3745
-        stdval = 7.8485
-    elif K_FOLD_NUMBER == 6:
-        meanval = 34.2179
-        stdval = 7.5478
-    elif K_FOLD_NUMBER == 7:
-        meanval = 34.5932
-        stdval = 6.8279
-    elif K_FOLD_NUMBER == 8:
-        meanval = 33.5666
-        stdval = 5.6292
-    elif K_FOLD_NUMBER == 9:
-        meanval = 34.1246
-        stdval = 5.9265
-
     ###################################################################################################
 
     # Ignore these specific warnings:
@@ -103,6 +74,9 @@ def main():
             return
         image = image.astype(np.float32)
         image = image[..., None]
+        
+        # Get mean and std:
+        meanval, stdval = network.get_mean_and_std(K_FOLD_NUMBER)
 
         # Normalise and slice:
         image_slices, slice_idxs = network.slice_image(((image - meanval) / stdval), IMAGE_WIDTH, OVERLAP_SIZE)
